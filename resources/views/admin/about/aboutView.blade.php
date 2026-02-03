@@ -34,7 +34,7 @@
 <div class="row mt-4">
     <div class="col-md-6">
         <h6 class="text-primary mb-2 fw-bold">Frontend Skills</h6>
-        @php $frontendSkills = $about->skills()->where('category', 'frontend')->get(); @endphp
+      @php $frontendSkills = $about->frontendSkills(); @endphp
         @forelse ($frontendSkills as $skill)
             <li class="mb-2 list-unstyled">
                 <i class="fa fa-check-circle text-success me-2"></i>{{ $skill->name }}
@@ -46,7 +46,7 @@
 
     <div class="col-md-6">
         <h6 class="text-primary mb-2 fw-bold">Backend Skills</h6>
-        @php $backendSkills = $about->skills()->where('category', 'backend')->get(); @endphp
+       @php $backendSkills = $about->backendSkills(); @endphp
         @forelse ($backendSkills as $skill)
             <li class="mb-2 list-unstyled">
                 <i class="fa fa-check-circle text-success me-2"></i>{{ $skill->name }}
