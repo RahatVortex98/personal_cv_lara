@@ -33,4 +33,6 @@ RUN chown -R www-data:www-data /var/www
 EXPOSE 80
 
 # 8. Start: Migrate then start Apache in foreground
-CMD php artisan migrate --force && apache2-foreground
+
+
+CMD php artisan migrate --force && php artisan db:seed --force && apache2-foreground
