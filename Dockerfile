@@ -19,6 +19,11 @@ RUN composer install --no-dev --optimize-autoloader
 # Ensure storage permissions
 RUN chmod -R 775 storage bootstrap/cache
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+# Install Node.js to compile assets
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt-get install -y nodejs
 
+# Install JS dependencies and build
+RUN npm install
+RUN npm run build
 EXPOSE 80
 CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=80
