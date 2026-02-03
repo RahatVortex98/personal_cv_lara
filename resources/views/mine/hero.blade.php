@@ -40,7 +40,7 @@
             @if ($hero && $hero->image)
                 <img src="{{ Storage::url($hero->image) }}" alt="MD. Raisul Islam" class="hero__img">
             @else
-                <img src="{{ asset('assets/img/profile-pic1.png') }}" alt="MD. Raisul Islam" class="hero__img">
+                <img src="#" alt="MD. Raisul Islam" class="hero__img">
             @endif
         </div>
     </div>
