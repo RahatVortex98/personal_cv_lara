@@ -34,5 +34,7 @@ EXPOSE 80
 
 # 8. Start: Migrate then start Apache in foreground
 
-
-CMD php artisan migrate --force && php artisan db:seed --force && apache2-foreground
+RUN php artisan storage:link
+RUN chmod -R 775 /var/www/storage /var/www/bootstrap/cache
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+CMD php artisan migrate --force && php artisan db:seed --force && php artisan storage:link && apache2-foreground
