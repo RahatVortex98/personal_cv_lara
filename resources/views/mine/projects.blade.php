@@ -1,7 +1,7 @@
 <section id="project" class="section project">
     <div class="container">
         <div class="section__header">
-            <h2 class="section__title">Projects</h2> [cite: 40]
+            <h2 class="section__title">Projects</h2>
             <span class="section__subtitle">My recent work</span>
         </div>
 
@@ -9,24 +9,24 @@
             @foreach ($projects as $project)
                 <div class="project__content">
                     @php
-                        // Default Placeholder
+                        $title = strtolower($project->title);
                         $imagePath = asset('assets/img/project-placeholder.png');
-                        
-                        // 1. Check if an image exists in the uploaded storage
-                        if ($project->image) {
+
+                        // 1. Check if a fresh upload exists in storage
+                        if ($project->image && file_exists(public_path('storage/' . $project->image))) {
                             $imagePath = asset('storage/' . $project->image);
                         } 
-                        // 2. Fallback to permanent assets based on keywords in title
-                        elseif (Str::contains(strtolower($project->title), 'well')) {
+                        // 2. Fallback to permanent GitHub assets by keyword
+                        elseif (Str::contains($title, 'well')) {
                             $imagePath = asset('assets/img/projects/all_well.webp');
                         }
-                        elseif (Str::contains(strtolower($project->title), 'hr')) {
+                        elseif (Str::contains($title, 'hr')) {
                             $imagePath = asset('assets/img/projects/hrms.png');
                         }
-                        elseif (Str::contains(strtolower($project->title), 'med')) {
+                        elseif (Str::contains($title, 'med')) {
                             $imagePath = asset('assets/img/projects/medconnect.png');
                         }
-                        elseif (Str::contains(strtolower($project->title), 'flex')) {
+                        elseif (Str::contains($title, 'flex')) {
                             $imagePath = asset('assets/img/projects/Logo.png');
                         }
                     @endphp
@@ -34,11 +34,11 @@
                     <img src="{{ $imagePath }}" alt="{{ $project->title }}" class="project__img">
 
                     <a href="{{ $project->link }}" class="project__link" target="_blank">
-                        <h3 class="project__title">{{ $project->title }}</h3> [cite: 41, 46, 51, 56]
+                        <h3 class="project__title">{{ $project->title }}</h3>
                     </a>
 
                     <p class="project__description">
-                        {{ $project->description }} [cite: 43, 48, 53, 58]
+                        {{ $project->description }}
                     </p>
 
                     <a href="{{ $project->link }}" class="project__link" target="_blank">
