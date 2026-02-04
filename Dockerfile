@@ -28,6 +28,7 @@ EXPOSE 80
 # The CMD cleans the link and re-links every time the container starts
 CMD php artisan migrate --force && \
     php artisan db:seed --force && \
+    php artisan config:clear && \
     rm -rf public/storage && \
     php artisan storage:link && \
     apache2-foreground

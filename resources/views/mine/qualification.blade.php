@@ -73,7 +73,7 @@
             <p class="qualification__footer-text text-gray-300 mb-4">
                 See my full resume for more details
             </p>
-            <a href="{{ asset('assets/MD.Raisul_Islam_Resume.pdf') }}" download 
+            <a href="{{ asset('storage/' . $hero->resume) }}" download class="btn btn--primary">
                class="btn btn--primary inline-flex items-center gap-2 px-8 py-4">
                 <i class="ri-file-download-line text-xl"></i>
                 Download Resume
