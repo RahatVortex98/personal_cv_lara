@@ -34,7 +34,11 @@ EXPOSE 80
 
 # 8. Start: Migrate then start Apache in foreground
 
+# Clear any existing link and create a fresh one
+RUN rm -rf public/storage
 RUN php artisan storage:link
+
+# Force recursive permissions on the ACTUAL storage folder
 RUN chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 CMD php artisan migrate --force && php artisan db:seed --force && php artisan storage:link && apache2-foreground
