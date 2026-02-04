@@ -74,7 +74,7 @@
                 See my full resume for more details
             </p>
             <a href="{{ asset('storage/' . $hero->resume) }}" download class="btn btn--primary">
-               class="btn btn--primary inline-flex items-center gap-2 px-8 py-4">
+               
                 <i class="ri-file-download-line text-xl"></i>
                 Download Resume
             </a>
