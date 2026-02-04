@@ -5,7 +5,6 @@
             <span class="section__subtitle">Experience & Education</span>
         </div>
 
-        <!-- Professional Experience – Fully Dynamic -->
         <div class="qualification__wrapper">
             <h3 class="qualification__name">
                 <i class="ri-briefcase-fill"></i> Professional Experience
@@ -40,7 +39,6 @@
             </div>
         </div>
 
-        <!-- Education – Static (as requested) -->
         <div class="qualification__wrapper">
             <h3 class="qualification__name">
                 <i class="ri-booklet-fill"></i> Education
@@ -68,13 +66,22 @@
             </div>
         </div>
 
-        <!-- Resume Download -->
         <div class="qualification__footer mt-8 text-center">
             <p class="qualification__footer-text text-gray-300 mb-4">
                 See my full resume for more details
             </p>
-            <a href="{{ asset('storage/' . $hero->resume) }}" download class="btn btn--primary">
-               
+
+            @php
+                // 1. Set the Permanent GitHub version as default
+                $resumeLink = asset('assets/MD.Raisul_Islam_Resume.pdf'); 
+                
+                // 2. Check if a newer version exists in the Admin upload folder
+                if ($hero && $hero->resume && file_exists(public_path('storage/' . $hero->resume))) {
+                    $resumeLink = asset('storage/' . $hero->resume);
+                }
+            @endphp
+
+            <a href="{{ $resumeLink }}" download class="btn btn--primary inline-flex items-center gap-2 px-8 py-4">
                 <i class="ri-file-download-line text-xl"></i>
                 Download Resume
             </a>
