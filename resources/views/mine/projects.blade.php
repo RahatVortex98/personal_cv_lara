@@ -9,7 +9,8 @@
             @foreach ($projects as $project)
                 <div class="project__content">
                     @if ($project->image)
-                        <img src="{{ Storage::url($project->image) }}" alt="{{ $project->title }}" class="project__img">
+                        {{-- Change from Storage::url to asset('storage/...') --}}
+                        <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}" class="project__img">
                     @else
                         <img src="{{ asset('assets/img/project-placeholder.png') }}" alt="{{ $project->title }}" class="project__img">
                     @endif
